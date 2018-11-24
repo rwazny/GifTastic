@@ -1,0 +1,10 @@
+#container {
+  width: 960px, center;
+}
+
+button,
+div,
+form,
+input {
+  margin: 10px;
+}

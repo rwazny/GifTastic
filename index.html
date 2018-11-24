@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Music Buttons</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Music Search</h1>
+
+      <!-- Rendered Buttons will get Dumped Here -->
+      <div id="buttons-view"></div>
+      <div id="images"></div>
+
+      <button data-genre="Pop Rock">Pop Rock</button>
+      <button data-genre="Classic Rock">Classic Rock</button>
+      <button data-genre="Country">Country</button>
+      <button data-genre="Hard Rock">Hard Rock</button>
+
+      <form id="genre-form">
+        <label for="genre-input">Enter Your Genre!</label>
+        <input type="text" id="genre-input" /> <br />
+
+        <!-- Button triggers new movie to be added -->
+        <input id="add-genre" type="submit" value="It Goes To Eleven!" />
+      </form>
+
+      <!-- Music will Get Dumped Here -->
+      <div id="music-view"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript"></script>
+    <script src="./JavaScript/app.js"></script>
+  </body>
+</html>
