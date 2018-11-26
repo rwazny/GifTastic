@@ -1,54 +1,108 @@
-// Initial array of Genres
-var topics = ("Pop Rock", "Classic Rock", "Country", "Hard Rock");
+$(document).ready(function() {
+  // my array
+  var topic = ["Pop Rock", "Hard Rock", "Classic Rock", "Punk Rock"];
 
-// Event listener for all button elements
-$("buttons").on("click", function() {
-  // In this case, the "this" keyword refers to the button that was clicked
-  var topics = $(this).attr("data-genre");
+  //function that displays the gif buttons
 
-  // Constructing a URL to search Giphy for the name of the genre
-  var queryURL =
-    "https://api.giphy.com/v1/gifs/search?q=" +
-    topics +
-    "cgZxOEhYRDwO2Iiyaj8yEhieXRG1xFAU=10";
+  function displayGifButtons() {
+    $("#gifButtonsView").empty();
+    for (var i = 0; i < topic.length; i++) {
+      var gifButton = $("<button>");
+      gifButton.addClass("genre");
+      gifButton.addClass("btn btn-primary");
+      gifButton.attr("data-name", topic[i]);
+      gifButton.text(topic[i]);
+      $("#gifButtonsView").append(gifButton);
+    }
+  }
 
-  // Performing our AJAX GET request
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  })
-    // After the data comes back from the API
-    .then(function(response) {
-      // Storing an array of results in the results variable
+  //function to add new button
+
+  function addNewButton() {
+    $("#addGif").on("click", function() {
+      var genre = $("#topicInput")
+        .val()
+        .trim();
+      if (genre == "") {
+        return false; //no blank buttons
+      }
+      topic.push(genre);
+
+      displayGifButtons();
+      return false;
+    });
+  }
+
+  //function to remove last button
+  function removeLastButton() {
+    $("removeGif").on("click", function() {
+      topic.pop(genre);
+      displayGifButtons();
+      return false;
+    });
+  }
+
+  // function that displays the gifs
+
+  function displayGifs() {
+    var genre = $(this).attr("data-name");
+    var queryURL =
+      "https://api.giphy.com/v1/gifs/search?q=" +
+      genre +
+      "&api_key=dc6zaTOxFJmzC&limit=10";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).done(function(response) {
+      $("#gifsView").empty();
+      //show results of gifs
       var results = response.data;
-
-      // Looping over every result item
+      if (results == "") {
+        alert("There is not a giffy for this!");
+      }
       for (var i = 0; i < results.length; i++) {
-        // Only taking action if the photo has an appropriate rating
-        if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
-          // Creating a div for the gif
-          var gifDiv = $("<div>");
+        //put gifs in a div
+        var gifDiv = $("<div1>");
+        //pull rating of gif
+        var gifRating = $("<p>").text("Rating " + results[i].rating);
+        gifDiv.append(gifRating);
 
-          // Storing the result item's rating
-          var rating = results[i].rating;
-
-          // Creating a paragraph tag with the result item's rating
-          var p = $("<p>").text("Rating: " + rating);
-
-          // Creating an image tag
-          var personImage = $("<img>");
-
-          // Giving the image tag an src attribute of a proprty pulled off the
-          // result item
-          personImage.attr("src", results[i].images.fixed_height.url);
-
-          // Appending the paragraph and personImage we created to the "gifDiv" div we created
-          gifDiv.append(p);
-          gifDiv.append(personImage);
-
-          // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-          $("#gifs-appear-here").prepend(gifDiv);
-        }
+        //pull gif
+        var gifImage = $("<img>");
+        gifImage.attr("src", results[i].images.fixed_height_small_still.url);
+        //paused images
+        gifImage.attr(
+          "data-still",
+          results[i].images.fixed_height_small_still.url
+        );
+        //animated images
+        gifImage.attr("data-animate", results[i].url);
+        //how images come in, already paused
+        gifImage.attr("data-state", "still");
+        gifImage.addClass("image");
+        gifDiv.append(gifImage);
+        //add new div to existing divs
+        $("#gifsView").prepend(gifDiv);
       }
     });
+  }
+
+  //list of already created ladies
+  displayGifButtons();
+  addNewButton();
+  removeLastButton();
+
+  //event listeners
+  $(document).on("click", ".genre", displayGifs);
+  $(document).on("click", ".image", function() {
+    var state = $(this).attr("data-state");
+    if (state == "still") {
+      $(this).attr("src", $(this).data("animate"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this).attr("src", $(this).data("still"));
+      $(this).attr("data-state", "still");
+    }
+  });
 });

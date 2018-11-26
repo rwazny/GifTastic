@@ -1,38 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Music Buttons</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css" />
-  </head>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>"Musical Giphy"</title>
 
-  <body>
-    <div class="container">
-      <h1>Music Search</h1>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Ranga" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	
 
-      <!-- Rendered Buttons will get Dumped Here -->
-      <div id="buttons-view"></div>
-      <div id="images"></div>
+	<div class="jumbotron"></div>
+		<div class="container">
+			<h1>MUSICAL GIPHY</h1>
+	
+			
+ <!-- Button -->
 
-      <button data-genre="Pop Rock">Pop Rock</button>
-      <button data-genre="Classic Rock">Classic Rock</button>
-      <button data-genre="Country">Country</button>
-      <button data-genre="Hard Rock">Hard Rock</button>
 
-      <form id="genre-form">
-        <label for="genre-input">Enter Your Genre!</label>
-        <input type="text" id="genre-input" /> <br />
+<!-- main Container -->
+<div class="container">
+<div id="gifButtonsView" class="container">
+			</div>
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+<!-- gifs -->
+<div id="gifsView">
+</div>	
+ </div>
 
-        <!-- Button triggers new movie to be added -->
-        <input id="add-genre" type="submit" value="It Goes To Eleven!" />
-      </form>
 
-      <!-- Music will Get Dumped Here -->
-      <div id="music-view"></div>
-    </div>
+<!-- submit Form-->
+<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+ <form id="gifForm" role="form"> 
+ </div>
+ </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript"></script>
-    <script src="./JavaScript/app.js"></script>
-  </body>
+ 
+ 	<div class="form-group">
+ 		<label for="topicInput"><h3>Enter Your Music Genre!</h3> </label>
+ 		<input type="text" id="topicInput">
+ 	</div>
+ 	<input id="addGif" type="submit" value="Add Your Pick" class="btn btn-primary">
+
+ 	<input id="removeGif" type="submit" value="Remove Last" class="btn btn-primary">	
+ </form>
+</div>
+ 
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>	
+
+<script type="text/javascript" src="./JavaScript/app.js"></script>
+
+</body>
 </html>
