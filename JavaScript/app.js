@@ -77,7 +77,7 @@ $(document).ready(function() {
           results[i].images.fixed_height_small_still.url
         );
         //animated images
-        gifImage.attr("data-animate", results[i].url);
+        gifImage.attr("data-animate", results[i].images.fixed_height.url);
         //how images come in, already paused
         gifImage.attr("data-state", "still");
         gifImage.addClass("image");
@@ -88,7 +88,7 @@ $(document).ready(function() {
     });
   }
 
-  //list of already created ladies
+  //list of already created Genres
   displayGifButtons();
   addNewButton();
   removeLastButton();

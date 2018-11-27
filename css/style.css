@@ -4,6 +4,8 @@
 
 body {
   background-image: url("../images/portrait-EVH.jpg");
+  background-size: cover;
+  line-height: 2.5;
 }
 
 button {
@@ -11,7 +13,6 @@ button {
   font-family: "Ranga", cursive;
   font-size: 25px;
   margin: 20px;
-  margin-bottom: 20px;
   -webkit-box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
   box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
@@ -26,7 +27,8 @@ button {
 .form-group {
   font-family: "Ranga", cursive;
   font-size: 25px;
-  background-color: rgb(210, 210, 210);
+
+  background-color: rgb(128, 128, 128);
   -webkit-box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
   box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
@@ -44,10 +46,10 @@ h1 {
 h3 {
   color: black;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .jumbotron {
-  align-content: top;
   align-content: center;
   text-align: center;
   color: antiquewhite;
@@ -63,6 +65,7 @@ h3 {
   font-family: "Ranga", cursive;
   font-size: 25px;
   background-color: rgb(194, 44, 44);
+  margin-bottom: 15px;
 }
 
 #removeGif {
@@ -70,10 +73,19 @@ h3 {
   font-family: "Ranga", cursive;
   font-size: 25px;
   background-color: rgb(194, 44, 44);
+  margin-bottom: 15px;
 }
 
 .btn-primary {
   font-family: "Ranga", cursive;
   font-size: 25px;
   background-color: rgb(194, 44, 44);
+}
+p {
+  font-family: "Ranga", cursive;
+  font-size: 20px;
+}
+
+#topicinput {
+  margin-left: 25px;
 }
