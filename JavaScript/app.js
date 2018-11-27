@@ -55,7 +55,6 @@ $(document).ready(function() {
       url: queryURL,
       method: "GET"
     }).done(function(response) {
-      $("#gifsView").empty();
       //show results of gifs
       var results = response.data;
       if (results == "") {
@@ -63,7 +62,7 @@ $(document).ready(function() {
       }
       for (var i = 0; i < results.length; i++) {
         //put gifs in a div
-        var gifDiv = $("<div1>");
+        var gifDiv = $("<div>");
         //pull rating of gif
         var gifRating = $("<p>").text("Rating " + results[i].rating);
         gifDiv.append(gifRating);
